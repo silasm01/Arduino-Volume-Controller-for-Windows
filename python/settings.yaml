@@ -1,5 +1,10 @@
 ---
   controlApplications:
-    1: chrome.exe
-    2: Spotify.exe
+    #Control potentiometers(1..maxlength) by setting one or more programs per potentiometer.
+    1: 
+      Spotify.exe
+    2: 
+      chrome.exe
+  
+  serialPort: Auto #Auto tries to find a port. Change if it connects to the wrong port or does not find a port.
 ...
