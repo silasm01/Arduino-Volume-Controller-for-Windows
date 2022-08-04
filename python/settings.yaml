@@ -1,6 +1,5 @@
 ---
   controlApplications:
-    1: 
-    2: 
-    3:  
+    1: chrome.exe
+    2: Spotify.exe
 ...

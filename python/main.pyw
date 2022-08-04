@@ -14,11 +14,8 @@ def main():
         last_second = time.strftime("%S")
 
         serial_input = getPotValues()
-        
-        if first == True:
-            first = False
-        else:
-            setVolume(serial_input, audioControlDict)
+
+        setVolume(serial_input, audioControlDict)
 
 def loadSettings():
     audioControlDict = []
@@ -33,9 +30,6 @@ def loadSettings():
                     if session.Process and session.Process.name() == i:
                         temp.append(session._ctl.QueryInterface(ISimpleAudioVolume))
             audioControlDict.append(temp)
-
-        serialPort = data.get("serialPort")
-        print(serialPort)
     return audioControlDict
             
 def getPotValues():
