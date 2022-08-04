@@ -4,11 +4,8 @@ void setup() {
   Serial.begin(9600);
   for (int i = 0; i <= (sizeof(potInputs)-1)/2; i++) {
     pinMode(potInputs[i], INPUT);
-    Serial.println(i);
   }
 }
-
-int last_second = 0;
 
 void loop() {
   int potValues[sizeof(potInputs)];
