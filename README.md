@@ -1,6 +1,6 @@
-# Arduino-Volume-Controller
+# Arduino-Volume-Controller-for-Windows
 > This uses [pycaw](https://github.com/AndreMiras/pycaw) and does therefore only work on Windows unless i find a good way to implement it on Linux, MacOS, etc.
-## How to set up AVM.
+## How to set up AVC.
 1. Download [arduino-sketch.ino](https://github.com/silasm01/Arduino-Volume-Controller/blob/main/arduino/arduino-sketch/arduino-sketch.ino).
 2. Edit [arduino-sketch.ino](https://github.com/silasm01/Arduino-Volume-Controller/blob/main/arduino/arduino-sketch/arduino-sketch.ino) to add or remove analog pins from ``potInputs[]`` to match your pin setup.
 3. Upload [arduino-sketch.ino](https://github.com/silasm01/Arduino-Volume-Controller/blob/main/arduino/arduino-sketch/arduino-sketch.ino) to your Arduino.
