@@ -1,4 +1,4 @@
-# Arduino-Volume-Controller-for-Windows
+# Arduino Volume Controller for Windows
 > This uses [pycaw](https://github.com/AndreMiras/pycaw) and does therefore only work on Windows unless i find a good way to implement it on Linux, MacOS, etc.
 ## How to set up AVCW.
 1. Download [arduino-sketch.ino](https://github.com/silasm01/Arduino-Volume-Controller/blob/main/arduino/arduino-sketch/arduino-sketch.ino).
