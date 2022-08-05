@@ -1,4 +1,3 @@
-from imp import is_frozen_package
 import yaml
 import serial
 import time
@@ -10,12 +9,13 @@ port.baudrate = 9600
 def main():
     audioControlDict, port = loadSettings()
     last_second = 0
+    serial_input = [0,0]
     while True:
         if int(last_second)+1 == int(time.strftime("%S")):
             audioControlDict, port = loadSettings()
         last_second = time.strftime("%S")
 
-        serial_input = getPotValues(port)
+        serial_input = getPotValues(port, serial_input)
 
         setVolume(serial_input, audioControlDict)
         
@@ -45,8 +45,15 @@ def loadSettings():
                  
     return audioControlDict, port
 
-def getPotValues(port):
-    serial_input = str(port.readline().strip()).replace("b","").replace("'","").split()
+def getPotValues(port, serial_input):
+    try:
+        serial_input = str(port.readline().strip()).replace("b","").replace("'","").split()
+    except:
+        for port1, _, _ in serial.tools.list_ports.comports():
+            try:
+                port.port = port1
+            except:
+                break
     return serial_input
 
 def setVolume(serial_input, audioControlDict):
