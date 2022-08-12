@@ -6,6 +6,7 @@
 3. Upload [arduino-sketch.ino](https://github.com/silasm01/Arduino-Volume-Controller/blob/main/arduino/arduino-sketch/arduino-sketch.ino) to your Arduino.
 4. Download both files from [python](https://github.com/silasm01/Arduino-Volume-Controller/tree/main/python) directory.
 7. Edit [settings.yaml](https://github.com/silasm01/Arduino-Volume-Controller/blob/main/python/settings.yaml) to fit your setup.
+8. Install requirements with ``pip install -r requirements.txt``
 #### Optional: Run on startup.
 1. Copy the [main.pyw](https://github.com/silasm01/Arduino-Volume-Controller/blob/main/python/main.pyw) file path.
 2. Press ``Win + r`` and type ``shell:startup`` to open startup folder.
