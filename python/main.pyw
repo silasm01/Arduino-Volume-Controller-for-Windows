@@ -3,8 +3,7 @@ import serial
 import time
 import serial.tools.list_ports
 from pycaw.pycaw import AudioUtilities, ISimpleAudioVolume
-port = serial.Serial()
-port.baudrate = 9600
+port = serial.Serial(baudrate = 9600)
 
 def main():
     audioControlDict, port = loadSettings()
@@ -22,6 +21,13 @@ def main():
 
 def loadSettings():
     audioControlDict = []
+    nonSelected = {}
+    for session in AudioUtilities.GetAllSessions():
+                    try:
+                        nonSelected[session.Process.name()] = session._ctl.QueryInterface(ISimpleAudioVolume)
+                    except:
+                        continue
+
     with open("settings.yaml") as f:
         data = yaml.load(f, Loader=yaml.BaseLoader)
 
@@ -31,6 +37,12 @@ def loadSettings():
                 for session in AudioUtilities.GetAllSessions():
                     if session.Process and session.Process.name() == i:
                         temp.append(session._ctl.QueryInterface(ISimpleAudioVolume))
+                        try:
+                            nonSelected[session.Process.name()] = 0
+                        except:
+                            continue
+                if i == "nonSelected":
+                    temp = nonSelected
             audioControlDict.append(temp)
 
         if port.port != data.get("serialPort"):
@@ -42,7 +54,7 @@ def loadSettings():
                         port.port = port1
         if port.isOpen() == False:
                 port.open()
-                 
+    
     return audioControlDict, port
 
 def getPotValues(port, serial_input):
@@ -62,7 +74,14 @@ def setVolume(serial_input, audioControlDict):
             try:
                 audioControlDict[i][u].SetMasterVolume(float(serial_input[i])/100, None)
             except:
-                return
+                continue
+        if type(audioControlDict[i]) == dict:
+            for u in audioControlDict[i]:
+                if audioControlDict[i][u] != 0:
+                    try:
+                        audioControlDict[i][u].SetMasterVolume(float(serial_input[i])/100, None)
+                    except:
+                        continue
 
 if __name__ == "__main__":
     main()
