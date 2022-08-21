@@ -2,10 +2,10 @@
   controlApplications:
     #Control potentiometers(1..maxlength) by setting one or more programs per potentiometer.
     1: 
-      nonSelected
+      master
     2: 
       chrome.exe
-      steam.exe
+      #Airtame.exe
   
   serialPort: Auto #Auto tries to find a port. Change if it connects to the wrong port or does not find a port.
 ...
